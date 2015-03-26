@@ -30,7 +30,7 @@ HeadingLinks.prototype.create = function() {
                              .replace(/\_+/g, '');          // remove underscores
 
     // add id attribute to element
-    this._headings[index].setAttribute('id', elementText);
+    element.setAttribute('id', elementText);
   }
 }
 
