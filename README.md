@@ -6,7 +6,7 @@ A small (< 1kb minified), dependency-free library for deep linking headings. It 
 
 ## Usage
 
-Add the script to your HTML.
+Include the script in your HTML.
 
 ```html
 <script src="heading-links.min.js"></script>
@@ -34,18 +34,24 @@ var headingLinks = new HeadingLinks({
 });
 ```
 
-### HeadingLinks.create()
+### .create()
 
-Adds ID attributes based on the provided `selector`.
+Adds ID attributes, for deep linking, based on the `selector` provided for this instance.
 
 ```javascript
 headingLinks.create();
 ```
 
-### HeadingLinks.destroy()
+> This method is called automatically when creating a new instance.
 
-Removes ID attributes based on the provided `selector`.
+### .destroy()
+
+Removes ID attributes, for deep linking, based on the `selector` provided for this instance.
 
 ```javascript
 headingLinks.destroy();
 ```
+
+## License
+
+MIT. &copy; Michael Cavalea.
