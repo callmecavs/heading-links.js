@@ -2,7 +2,11 @@
 
 Inspiration: [https://twitter.com/_dte/status/580873945580109824](https://twitter.com/_dte/status/580873945580109824)
 
-A small (< 1kb minified), dependency-free library for deep linking headings. It does so by taking their content, parsing it into URL format, and then adding ID attributes.
+**A small (< 1kb minified), dependency-free library for deep linking headings.** It does so by taking their content, parsing it into URL format, and then adding ID attributes.
+
+## Demo
+
+[Download](https://github.com/callmecavs/heading-links/archive/master.zip) the repo, unzip it, and check out `demo.html`.
 
 ## Usage
 
@@ -19,8 +23,6 @@ var headingLinks = new HeadingLinks({
   selector: 'h1, h2, h3'
 });
 ```
-
-That's it!
 
 ## API
 
