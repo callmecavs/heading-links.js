@@ -38,7 +38,7 @@ var headingLinks = new HeadingLinks({
 
 ### .create()
 
-Adds ID attributes, for deep linking, based on the `selector` provided for this instance.
+Adds ID attribute to headings, based on the `selector` for this instance.
 
 ```javascript
 headingLinks.create();
@@ -48,7 +48,7 @@ headingLinks.create();
 
 ### .destroy()
 
-Removes ID attributes, for deep linking, based on the `selector` provided for this instance.
+Removes ID attribute from headings, based on the `selector` for this instance.
 
 ```javascript
 headingLinks.destroy();
