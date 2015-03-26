@@ -8,43 +8,20 @@ var onError = function(error) {
   this.emit('end');
 };
 
-// minify html
-gulp.task('html', function() {
-  return gulp.src('src/index.html')
-    .pipe(plugins.htmlmin({ collapseWhitespace: true, removeComments: true }))
-    .on('error', onError)
-    .pipe(gulp.dest('dist'))
-    .pipe(plugins.connect.reload());
-});
-
-// compile and compress sass
-gulp.task('sass', function() {
-  return gulp.src('src/style/style.scss')
-    .pipe(plugins.sass({ outputStyle: 'compressed' }))
-    .on('error', onError)
-    .pipe(gulp.dest('dist'))
-    .pipe(plugins.connect.reload());
-});
-
-// concat and uglify scripts
+// uglify script
 gulp.task('scripts', function() {
-  return gulp.src('src/scripts/*.js')
-    .pipe(plugins.concat('scripts.js'))
+  return gulp.src('heading-links.js')
+    .pipe(gulp.dest('dist'))
+    .pipe(plugins.rename(function(path) {
+      path.basename = "heading-links.min"
+    }))
     .pipe(plugins.uglify())
     .on('error', onError)
     .pipe(gulp.dest('dist'))
     .pipe(plugins.connect.reload());
 });
 
-// minify all images
-gulp.task('images', function() {
-  return gulp.src('src/images/**/*')
-    .pipe(plugins.imagemin({ progressive: true }))
-    .on('error', onError)
-    .pipe(gulp.dest('dist/images'));
-});
-
-// start local server on port 3000
+// localhost:3000
 gulp.task('server', function() {
   return plugins.connect.server({
     root: 'dist',
@@ -53,13 +30,10 @@ gulp.task('server', function() {
   });
 });
 
-// watch sass and js files
+// watch js file
 gulp.task('watch', function() {
-  gulp.watch('src/index.html', ['html']);
-  gulp.watch('src/style/*.scss', ['sass']);
-  gulp.watch('src/scripts/*.js', ['scripts']);
-  gulp.watch('src/images/**/*', ['images']);
+  gulp.watch('heading-links.js', ['scripts']);
 });
 
 // default task
-gulp.task('default', ['server', 'html', 'sass', 'scripts', 'images', 'watch']);
+gulp.task('default', ['server', 'scripts', 'watch']);

@@ -3,26 +3,16 @@
 // CONSTRUCTOR
 
 function HeadingLinks( options ) {
-  // status
-  this._status         = true;
-
-  // selector defaults
+  // defaults
   this._selector       = options.selector || 'h1, h2, h3';
   this._headings       = document.querySelectorAll(this._selector);
   this._headingsLength = this._headings.length;
 
-  // link defaults
-  this._case     = options.case || 'kebab-case';
-
-  // call to create
+  // call create
   document.addEventListener('DOMContentLoaded', this.create(), false);
 }
 
 // METHODS
-
-HeadingLinks.prototype.status = function() {
-
-}
 
 HeadingLinks.prototype.create = function() {
   // loop through headings
@@ -33,16 +23,12 @@ HeadingLinks.prototype.create = function() {
     // get heading text
     var elementText = element.textContent;
 
-    // convert to desired link case
-    switch(this._case) {
-      case 'kebab-case':
-        elementText = elementText.toLowerCase()                 // convert to lower case
-                                 .replace(/[^\w\s]/gi, '')      // remove special chars, but preserve spaces
-                                 .replace(/\s+/g, '-');         // replace spaces with dashes
-      break;
-    }
+    // convert text to kebab-case
+    elementText = elementText.toLowerCase()                 // convert to lower case
+                             .replace(/[^\w\s]/gi, '')      // remove special chars, but preserve spaces
+                             .replace(/\s+/g, '-');         // replace spaces with dashes
 
-    // add id attribute
+    // add id attribute to element
     this._headings[index].setAttribute('id', elementText);
   }
 }
