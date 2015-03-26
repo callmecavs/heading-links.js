@@ -26,7 +26,8 @@ HeadingLinks.prototype.create = function() {
     // convert text to kebab-case
     elementText = elementText.toLowerCase()                 // convert to lower case
                              .replace(/[^\w\s]/gi, '')      // remove special chars, but preserve spaces
-                             .replace(/\s+/g, '-');         // replace spaces with dashes
+                             .replace(/\s+/g, '-')          // replace spaces with dashes
+                             .replace(/\_+/g, '');          // remove underscores
 
     // add id attribute to element
     this._headings[index].setAttribute('id', elementText);
