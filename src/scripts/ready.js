@@ -3,6 +3,9 @@
 // CONSTRUCTOR
 
 function HeadingLinks( options ) {
+  // status
+  this._status         = true;
+
   // selector defaults
   this._selector       = options.selector || 'h1, h2, h3';
   this._headings       = document.querySelectorAll(this._selector);
@@ -16,6 +19,10 @@ function HeadingLinks( options ) {
 }
 
 // METHODS
+
+HeadingLinks.prototype.status = function() {
+
+}
 
 HeadingLinks.prototype.create = function() {
   // loop through headings
