@@ -1,0 +1,20 @@
+// media queries
+
+@mixin mq-max($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin mq-min($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+// letter spacing
+
+@mixin letter-spacing($length) {
+  letter-spacing: $length;
+  text-indent: $length;
+}
