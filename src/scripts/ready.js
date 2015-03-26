@@ -41,5 +41,9 @@ HeadingLinks.prototype.create = function() {
 }
 
 HeadingLinks.prototype.destroy = function() {
-
+  // loop through headings
+  for(var index = 0; index < this._headingsLength; index++) {
+    // remove id attribute
+    this._headings[index].removeAttribute('id');
+  }
 }
