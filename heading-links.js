@@ -41,3 +41,7 @@ HeadingLinks.prototype.destroy = function() {
     this._headings[index].removeAttribute('id');
   }
 }
+
+HeadingLinks.prototype.getList = function() {
+  return this._headings;
+}

@@ -54,6 +54,14 @@ Removes ID attributes, for deep linking, based on the `selector` provided for th
 headingLinks.destroy();
 ```
 
+### .getList()
+
+Returns a NodeList of all headings matched by the `selector` for this instance.
+
+```javascript
+var listOfHeadings = headingLinks.getList();
+```
+
 ## License
 
 MIT. &copy; Michael Cavalea.
