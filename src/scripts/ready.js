@@ -11,13 +11,13 @@ function HeadingLinks( options ) {
   // link defaults
   this._case     = options.case || 'kebab-case';
 
-  // call to init
-  document.addEventListener('DOMContentLoaded', this.init(), false);
+  // call to create
+  document.addEventListener('DOMContentLoaded', this.create(), false);
 }
 
 // METHODS
 
-HeadingLinks.prototype.init = function() {
+HeadingLinks.prototype.create = function() {
   // loop through headings
   for(var index = 0; index < this._headingsLength; index++) {
     // get node
