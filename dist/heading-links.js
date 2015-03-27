@@ -11,7 +11,7 @@ function HeadingLinks( options ) {
   this._headings       = document.querySelectorAll(this._selector);
   this._headingsLength = this._headings.length;
 
-  // hover handlers
+  // mouse enter handler
   this._hoverLinkMouseEnter = function( event ) {
     // get heading that was hovered on
     var heading = event.target;
@@ -37,11 +37,15 @@ function HeadingLinks( options ) {
     heading.appendChild(link);
   }
 
+  // mouse leave handler
   this._hoverLinkMouseLeave = function( event ) {
     // get heading that was hovered on
     var heading = event.target;
 
-    // be careful about only removing the link with the id
+    // BE CAREFUL ABOUT REMOVING ONLY THE LINK WITH THE MATCHING ID
+
+    // get the children
+    var children = heading.children;
   }
 
   // call to create
