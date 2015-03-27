@@ -5,7 +5,7 @@
 function HeadingLinks( options ) {
   // defaults
   this._selector       = options.selector || 'h1, h2, h3';
-  this._hoverLinks     = options.hoverLinks || true;            // THIS IS BUGGED!
+  this._hoverLinks     = options.hoverLinks !== false;
 
   // headings vars
   this._headings       = document.querySelectorAll(this._selector);
