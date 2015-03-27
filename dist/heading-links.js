@@ -5,10 +5,22 @@
 function HeadingLinks( options ) {
   // defaults
   this._selector       = options.selector || 'h1, h2, h3';
+  this._hoverLinks     = options.hoverLinks || true;
+
+  // headings vars
   this._headings       = document.querySelectorAll(this._selector);
   this._headingsLength = this._headings.length;
 
-  // call create
+  // hover handlers
+  this._hoverLinkMouseEnter = function() {
+
+  }
+
+  this._hoverLinkMouseLeave = function() {
+
+  }
+
+  // call to create
   document.addEventListener('DOMContentLoaded', this.create(), false);
 }
 
@@ -32,6 +44,10 @@ HeadingLinks.prototype.create = function() {
     // add id attribute to element
     element.setAttribute('id', elementText);
   }
+
+  // optionally bind hover handler
+  if(this._hoverLinks)
+    this.bindHoverLinks();
 }
 
 HeadingLinks.prototype.destroy = function() {
@@ -39,6 +55,24 @@ HeadingLinks.prototype.destroy = function() {
   for(var index = 0; index < this._headingsLength; index++) {
     // remove id attribute
     this._headings[index].removeAttribute('id');
+  }
+}
+
+HeadingLinks.prototype.bindHoverLinks = function() {
+  // loop through headings
+  for(var index = 0; index < this._headingsLength; index++) {
+    // bind hover events
+    this._headings[index].addEventListener('mouseenter', this._hoverLinkMouseEnter);
+    this._headings[index].addEventListener('mouseleave', this._hoverLinkMouseLeave);
+  }
+}
+
+HeadingLinks.prototype.unbindHoverLinks = function() {
+  // loop through headings
+  for(var index = 0; index < this._headingsLength; index++) {
+    // unbind hover events
+    this._headings[index].removeEventListener('mouseenter', this._hoverLinkMouseEnter);
+    this._headings[index].removeEventListener('mouseleave', this._hoverLinkMouseLeave);
   }
 }
 
