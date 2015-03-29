@@ -1,0 +1,9 @@
+[data-heading-link] {
+  padding: 0 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+[data-heading-link]::after {
+  content: "\221E";
+}
