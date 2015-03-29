@@ -10,7 +10,7 @@ var onError = function(error) {
 
 // uglify script
 gulp.task('scripts', function() {
-  return gulp.src('heading-links.js')
+  return gulp.src('dist/heading-links.js')
     .pipe(gulp.dest('dist'))
     .pipe(plugins.rename(function(path) {
       path.basename = "heading-links.min"
@@ -32,7 +32,7 @@ gulp.task('server', function() {
 
 // watch js file
 gulp.task('watch', function() {
-  gulp.watch('heading-links.js', ['scripts']);
+  gulp.watch('dist/heading-links.js', ['scripts']);
 });
 
 // default task
