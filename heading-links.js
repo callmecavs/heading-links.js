@@ -6,6 +6,7 @@ function HeadingLinks( options ) {
   // defaults
   this._selector       = options.selector || 'h1, h2, h3';
   this._hoverLinks     = options.hoverLinks !== false;
+  this._linksAttr      = options.linksAttr || 'data-heading-link';
 
   // headings vars
   this._headings       = document.querySelectorAll(this._selector);
@@ -16,22 +17,15 @@ function HeadingLinks( options ) {
     // get heading that was hovered on
     var heading = event.target;
 
-    // save heading id and text
-    var headingID   = heading.id;
-    var headingText = heading.textContent;
+    // save heading id
+    var headingID = heading.id;
 
     // create link
     var link = document.createElement('a');
 
     // add link href attribute
-    var linkUrl = '//' + window.location.hostname + window.location.pathname + '#' + headingID;
+    var linkUrl = '#' + headingID;
     link.setAttribute('href', linkUrl);
-
-    // set link text content
-    link.textContent = headingText;
-
-    // clear heading text content
-    heading.textContent = '';
 
     // append link to heading
     heading.appendChild(link);
