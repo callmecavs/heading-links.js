@@ -53,8 +53,6 @@ HeadingLinks.prototype.destroy = function() {
 }
 
 HeadingLinks.prototype.addHoverLinks = function() {
-
-
   // loop through headings
   for(var index = 0; index < this._headingsLength; index++) {
     // get heading
