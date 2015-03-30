@@ -39,8 +39,9 @@ HeadingLinks.prototype.create = function() {
   }
 
   // optionally add hover links
-  if(this._hoverLinks)
+  if(this._hoverLinks) {
     this.addHoverLinks();
+  }
 }
 
 HeadingLinks.prototype.destroy = function() {
