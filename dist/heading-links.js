@@ -4,59 +4,14 @@
 
 function HeadingLinks( options ) {
   // defaults
-  this._selector       = options.selector || 'h1, h2, h3';
-  this._hoverLinks     = options.hoverLinks !== false;
-  this._linksAttr      = options.linksAttr || 'data-heading-link';
+  this._selector         = options.selector || 'h1, h2, h3';
+  this._hoverLinks       = options.hoverLinks !== false;
+  this._hoverHeadingAttr = options.hoverHeadingAttr || 'data-heading';
+  this._hoverLinkAttr    = options.hoverLinkAttr || 'data-heading-link';
 
   // headings vars
   this._headings       = document.querySelectorAll(this._selector);
   this._headingsLength = this._headings.length;
-
-  // cache context for handlers
-  var self = this;
-
-  // mouse enter handler
-  this._hoverLinkMouseEnter = function( event ) {
-    // get heading that was hovered on
-    var heading = event.target;
-
-    // save heading id
-    var headingID = heading.id;
-
-    // create link
-    var link = document.createElement('a');
-
-    // add link href attribute
-    var linkUrl = '#' + headingID;
-    link.setAttribute('href', linkUrl);
-    link.setAttribute(self._linksAttr, '');
-
-    // append link to heading
-    heading.appendChild(link);
-  }
-
-  // mouse leave handler
-  this._hoverLinkMouseLeave = function( event ) {
-    // get heading that was hovered on
-    var heading = event.target;
-
-    // get the children
-    var children = heading.children;
-
-    // cache children length
-    var childrenLength = children.length;
-
-    // loop through children
-    for(var index = 0; index < childrenLength; index++) {
-      // remove only the link with heading
-      if(children[index].hasAttribute(self._linksAttr)) {
-        children[index].parentNode.removeChild(children[index]);
-
-        // stop after we find it
-        break;
-      }
-    }
-  }
 
   // call to create
   document.addEventListener('DOMContentLoaded', this.create(), false);
@@ -83,9 +38,9 @@ HeadingLinks.prototype.create = function() {
     element.setAttribute('id', elementText);
   }
 
-  // optionally bind hover handler
+  // optionally add hover links
   if(this._hoverLinks)
-    this.bindHoverLinks();
+    this.addHoverLinks();
 }
 
 HeadingLinks.prototype.destroy = function() {
@@ -96,21 +51,58 @@ HeadingLinks.prototype.destroy = function() {
   }
 }
 
-HeadingLinks.prototype.bindHoverLinks = function() {
+HeadingLinks.prototype.addHoverLinks = function() {
+
+
   // loop through headings
   for(var index = 0; index < this._headingsLength; index++) {
-    // bind hover events
-    this._headings[index].addEventListener('mouseenter', this._hoverLinkMouseEnter);
-    this._headings[index].addEventListener('mouseleave', this._hoverLinkMouseLeave);
+    // get heading
+    var heading = this._headings[index];
+
+    // add heading data attribute
+    heading.setAttribute(this._hoverHeadingAttr, '');
+
+    // save id
+    var headingID = heading.id;
+
+    // create link
+    var link = document.createElement('a');
+
+    // add link href attribute
+    var linkUrl = '#' + headingID;
+    link.setAttribute('href', linkUrl);
+    link.setAttribute(this._hoverLinkAttr, '');
+
+    // append link to heading
+    heading.appendChild(link);
   }
 }
 
-HeadingLinks.prototype.unbindHoverLinks = function() {
+HeadingLinks.prototype.removeHoverLinks = function() {
   // loop through headings
-  for(var index = 0; index < this._headingsLength; index++) {
-    // unbind hover events
-    this._headings[index].removeEventListener('mouseenter', this._hoverLinkMouseEnter);
-    this._headings[index].removeEventListener('mouseleave', this._hoverLinkMouseLeave);
+  for(var headingIndex = 0; headingIndex < this._headingsLength; headingIndex++) {
+    // get heading
+    var heading = this._headings[headingIndex];
+
+    // remove heading data attribute
+    heading.removeAttribute(this._hoverHeadingAttr);
+
+    // get the children
+    var children = heading.children;
+
+    // cache children length
+    var childrenLength = children.length;
+
+    // loop through children
+    for(var childrenIndex = 0; childrenIndex < childrenLength; childrenIndex++) {
+      // remove only the link with heading
+      if(children[childrenIndex].hasAttribute(this._hoverLinkAttr)) {
+        children[childrenIndex].parentNode.removeChild(children[childrenIndex]);
+
+        // stop after we find it
+        break;
+      }
+    }
   }
 }
 

@@ -10,7 +10,7 @@ var onError = function(error) {
 
 // minify css
 gulp.task('sass', function() {
-  return gulp.src('dist/heading-links.css')
+  return gulp.src('dist/heading-links.scss')
     .pipe(gulp.dest('dist'))
     .pipe(plugins.rename(function(path) {
       path.basename = "heading-links.min"
@@ -45,7 +45,7 @@ gulp.task('server', function() {
 
 // watch js file
 gulp.task('watch', function() {
-  gulp.watch('dist/heading-links.css', ['sass']);
+  gulp.watch('dist/heading-links.scss', ['sass']);
   gulp.watch('dist/heading-links.js', ['scripts']);
 });
 
