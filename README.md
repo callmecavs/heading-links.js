@@ -2,7 +2,7 @@
 
 Inspiration: [https://twitter.com/_dte/status/580873945580109824](https://twitter.com/_dte/status/580873945580109824)
 
-**A small (< 1kb minified), dependency-free library for deep linking headings.** It does so by taking their content, parsing it into URL format, and then adding ID attributes.
+**A small (< 2kb minified), dependency-free library for deep linking headings - GitHub style.** It does so by taking a headings text content, parsing it into URL format, adding an ID attribute, and inserting a link that appears on hover.
 
 ## Demo
 
@@ -10,7 +10,15 @@ Inspiration: [https://twitter.com/_dte/status/580873945580109824](https://twitte
 
 ## Usage
 
-Include the script in your HTML.
+Load the stylesheet.
+
+```html
+<!-- only if hover links are enabled -->
+
+<link rel="stylesheet" href="heading-links.min.css">
+```
+
+Load the script.
 
 ```html
 <script src="heading-links.min.js"></script>
@@ -20,7 +28,12 @@ Create a new instance with your desired options. Defaults shown below.
 
 ```javascript
 var headingLinks = new HeadingLinks({
-  selector: 'h1, h2, h3'
+  // options here, defaults shown below
+
+  selector: 'h1, h2, h3',
+  hoverLinks: true,
+  hoverHeadingAttr: 'data-heading',
+  hoverLinkAttr: 'data-heading-link'
 });
 ```
 
@@ -38,7 +51,7 @@ var headingLinks = new HeadingLinks({
 
 ### .create()
 
-Adds ID attribute to headings, based on the `selector` for this instance.
+Adds ID attribute to headings, based on the `selector`.
 
 ```javascript
 headingLinks.create();
@@ -48,10 +61,28 @@ headingLinks.create();
 
 ### .destroy()
 
-Removes ID attribute from headings, based on the `selector` for this instance.
+Removes ID attribute from headings, based on the `selector`.
 
 ```javascript
 headingLinks.destroy();
+```
+
+### .addHoverLinks()
+
+Inserts hover links into headings, based on the `selector`.
+
+```javascript
+headingLinks.addHoverLinks();
+```
+
+> This method is called automatically when creating a new instance if hover links are enabled.
+
+### .removeHoverLinks()
+
+Removes hover links from headings, based on the `selector`.
+
+```javascript
+headingLinks.removeHoverLinks();
 ```
 
 ### .getList()
