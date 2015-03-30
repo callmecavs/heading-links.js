@@ -106,5 +106,6 @@ HeadingLinks.prototype.removeHoverLinks = function() {
 }
 
 HeadingLinks.prototype.getList = function() {
+  // return node list of headings
   return this._headings;
 }
