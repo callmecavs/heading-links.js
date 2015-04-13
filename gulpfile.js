@@ -12,12 +12,6 @@ var onError = function(error) {
 gulp.task('sass', function() {
   return gulp.src('dist/heading-links.scss')
     .pipe(gulp.dest('dist'))
-    .pipe(plugins.rename(function(path) {
-      path.basename = "heading-links.min"
-    }))
-    .pipe(plugins.sass({ outputStyle: 'compressed' }))
-    .on('error', onError)
-    .pipe(gulp.dest('dist'))
     .pipe(plugins.connect.reload());
 });
 
