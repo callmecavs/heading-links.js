@@ -1,4 +1,4 @@
-// defaults
+// attribute selectors - should match instance settings
 
 $hover-heading-attr: "[data-heading]";
 $hover-link-attr:    "[data-heading-link]";
@@ -10,14 +10,14 @@ $hover-link-attr:    "[data-heading-link]";
   padding: 0 10px;
   text-decoration: none;
   color: inherit;
-}
 
-#{$hover-link-attr}::after {
-  content: "\221E";
+  &::after {
+    content: "\221E";
+  }
 }
 
 // show link when heading is hovered
 
 #{$hover-heading-attr}:hover #{$hover-link-attr} {
-  display: inline-block;
+  display: inline;
 }
